@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+    <title>ลงทะเบียนเรียน</title>
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/reg.css">
+    <style>
+        .search-input {
+            background-color: #ffffff;
+            color: #fff;
+            border: 1px solid #000000;
+            border-radius: 10px;
+
+            /* เพิ่ม border ของ input field */
+        }
+
+        th {
+            background-color: #d6915f;
+        }
+
+        th:first-child {
+            border-top-left-radius: 10px;
+            /* สำหรับหัวแนวตั้งด้านซ้ายบน */
+            border-bottom-left-radius: 0px;
+            /* สำหรับหัวแนวตั้งด้านซ้ายล่าง */
+        }
+
+        th:last-child {
+            border-top-right-radius: 10px;
+            /* สำหรับหัวแนวตั้งด้านขวาบน */
+            border-bottom-right-radius: 0px;
+            /* สำหรับหัวแนวตั้งด้านขวาล่าง */
+        }
+
+        .d-flex.justify-content-center.h-100 {
+            margin-top: -210px;
+            /* ปรับค่าตามที่ต้องการขึ้นหรือลง */
+        }
+    </style>
+</head>
+
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                <!-- Header -->
+                <header id="header">
+                    <div class="logo">
+                        <a href="StudentIndex.html">NU STUDENT</a>
+                    </div>
+                </header>
+                <h1>รายวิชาที่ต้องการลงทะเบียนเรียน</h1>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">รหัสวิชา</th>
+                            <th scope="col">ชื่อวิชา</th>
+                            <th scope="col">ลงทะเบียน</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>xxxx</td>
+                            <td>xxxxxxxxxxx</td>
+                            <td><button class="Btn">Add to Cart</button></td>
+                        </tr>
+                        <!-- เพิ่มข้อมูลเพิ่มเติมตามความเหมาะสม -->
+                    </tbody>
+                </table>
+                <tbody id="searchResults">
+                    <!-- ตารางที่แสดงรายวิชาจะถูกเติมที่นี่ -->
+                </tbody>
+                </table>
+                <!-- Page Heading -->
+                <div class="d-flex justify-content-center h-100">
+                    <form class="form-horizontal" action="search.php" method="post">
+                        <div class="search">
+                            <input type="text" class="search-input" placeholder="ใส่รหัสรายวิชา" name="search">
+                            <button class="w3-btn w3-round-xlarge" type="submit">ค้นหา</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- Display Search Results -->
+                <div id="searchResults" class="mt-4"></div>
+
+                <!-- ตำแหน่งที่จะแสดงข้อมูลในตะกร้า -->
+                <div id="cartContents" class="mt-4"></div>
+
+                <!-- ลิงก์หรือปุ่มเพื่อดูตะกร้า -->
+            </div>
+        </div>
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="inner">
+                <!-- Search Box -->
+                <img class="nulogo" src="assets/images/NU_LOGO.png">
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <ul>
+                        <li><a href="StudentIndex.html">หน้าหลัก</a></li>
+                        <li><a href="viewCart.php">ยืนยัน</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to handle Add button click
+            function addToCart(itemId) {
+                // Perform AJAX request to addToCart.php with the item ID
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Display a success message or perform additional actions if needed
+                        alert('Item added to cart successfully!');
+                    }
+                };
+                xhr.open('POST', 'addToCart.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.send('itemId=' + itemId);
+            }
+
+            // Attach click event to the Add button
+            document.getElementById('searchResults').addEventListener('click', function (event) {
+                // Check if the clicked element has the 'addToCartBtn' class
+                if (event.target.classList.contains('addToCartBtn')) {
+                    // Get the data-item-id attribute to identify the item
+                    var itemId = event.target.getAttribute('data-item-id');
+                    // Call the addToCart function with the itemId
+                    addToCart(itemId);
+                }
+            });
+
+            // Function to handle form submission
+            document.querySelector('form').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Get the form data
+                var formData = new FormData(this);
+
+                // Perform AJAX request to search.php
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Update the searchResults div with the response
+                        document.getElementById('searchResults').innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.open('POST', 'search.php', true);
+                xhr.send(formData);
+            });
+        });
+    </script>
+</body>
+
+</html>

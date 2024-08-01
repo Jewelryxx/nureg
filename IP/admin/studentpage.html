@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content>
+    <meta name="author" content>
+    <title>SB Admin 2 - Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+      type="text/css">
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+    .bg-orange {
+      background-color: #fd7e14;
+    }
+  </style>
+  </head>
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <ul
+        class="navbar-nav bg-gradient bg-orange sidebar sidebar-dark accordion"
+        id="accordionSidebar">
+        <!-- Sidebar - Brand -->
+        <a
+          class="sidebar-brand d-flex align-items-center justify-content-center"
+          href="main.php">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+          </div>
+          <div class="sidebar-brand-text mx-2">NU DASHBOARD</div>
+        </a>
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+          <a class="nav-link" href="main.php">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+        </li>
+        <hr class="sidebar-divider">
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+          <a class="nav-link" href="studentpage.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Students</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="teacherpage.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Teacher</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="subject.php">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Subject</span></a>
+        </li>
+
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+      </ul>
+
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          <nav
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <button id="sidebarToggleTop"
+              class="btn btn-link d-md-none rounded-circle mr-3">
+              <i class="fa fa-bars"></i>
+            </button>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown no-arrow d-sm-none">
+                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown"
+                  role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-search fa-fw"></i>
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                  aria-labelledby="searchDropdown">
+                  <form class="form-inline mr-auto w-100 navbar-search">
+                    <div class="input-group">
+                      <input type="text"
+                        class="form-control bg-light border-0 small"
+                        placeholder="Search for..."
+                        aria-label="Search" aria-describedby="basic-addon2">
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                          <i class="fas fa-search fa-sm"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="container-fluid">
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            </div>
+            <form id="filterForm" action="filter.php" method="post">
+              <label for="gender">Gender:</label>
+              <select name="gender" id="gender">
+                <option value>All</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+              </select>
+              <label for="province">Province:</label>
+              <select name="province" id="province">
+                <option value>All</option>
+                <option value="1">กระบี่</option>
+                <option value="2">กรุงเทพมหานคร</option>
+                <option value="3">กาญจนบุรี</option>
+                <option value="4">กาฬสินธุ์</option>
+                <option value="5">กำแพงเพชร</option>
+                <option value="6">ขอนแก่น</option>
+                <option value="7">จันทบุรี</option>
+                <option value="8">ฉะเชิงเทรา</option>
+                <option value="9">ชลบุรี</option>
+                <option value="10">ชัยนาท</option>
+                <option value="11">ชัยภูมิ</option>
+                <option value="12">ชุมพร</option>
+                <option value="13">เชียงราย</option>
+                <option value="14">เชียงใหม่</option>
+                <option value="15">ตรัง</option>
+                <option value="16">ตราด</option>
+                <option value="17">ตาก</option>
+                <option value="18">นครนายก</option>
+                <option value="19">นครปฐม</option>
+                <option value="20">นครพนม</option>
+                <option value="21">นครราชสีมา</option>
+                <option value="22">นครศรีธรรมราช</option>
+                <option value="23">นครสวรรค์</option>
+                <option value="24">นนทบุรี</option>
+                <option value="25">นราธิวาส</option>
+                <option value="26">น่าน</option>
+                <option value="27">บึงกาฬ</option>
+                <option value="28">บุรีรัมย์</option>
+                <option value="29">ปทุมธานี</option>
+                <option value="30">ประจวบคีรีขันธ์</option>
+                <option value="31">ปราจีนบุรี</option>
+                <option value="32">ปัตตานี</option>
+                <option value="33">พระนครศรีอยุธยา</option>
+                <option value="34">พะเยา</option>
+                <option value="35">พังงา</option>
+                <option value="36">พัทลุง</option>
+                <option value="37">พิจิตร</option>
+                <option value="38">พิษณุโลก</option>
+                <option value="39">เพชรบุรี</option>
+                <option value="40">เพชรบูรณ์</option>
+                <option value="41">แพร่</option>
+                <option value="42">ภูเก็ต</option>
+                <option value="43">มหาสารคาม</option>
+                <option value="44">มุกดาหาร</option>
+                <option value="45">แม่ฮ่องสอน</option>
+                <option value="46">ยโสธร</option>
+                <option value="47">ยะลา</option>
+                <option value="48">ร้อยเอ็ด</option>
+                <option value="49">ระนอง</option>
+                <option value="50">ระยอง</option>
+                <option value="51">ราชบุรี</option>
+                <option value="52">ลพบุรี</option>
+                <option value="53">ลำปาง</option>
+                <option value="54">ลำพูน</option>
+                <option value="55">เลย</option>
+                <option value="56">ศรีสะเกษ</option>
+                <option value="57">สกลนคร</option>
+                <option value="58">สงขลา</option>
+                <option value="59">สตูล</option>
+                <option value="60">สมุทรปราการ</option>
+                <option value="61">สมุทรสงคราม</option>
+                <option value="62">สมุทรสาคร</option>
+                <option value="63">สระแก้ว</option>
+                <option value="64">สระบุรี</option>
+                <option value="65">สิงห์บุรี</option>
+                <option value="66">สุโขทัย</option>
+                <option value="67">สุพรรณบุรี</option>
+                <option value="68">สุราษฎร์ธานี</option>
+                <option value="69">สุรินทร์</option>
+                <option value="70">หนองคาย</option>
+                <option value="71">หนองบัวลำภู</option>
+                <option value="72">อ่างทอง</option>
+                <option value="73">อำนาจเจริญ</option>
+                <option value="74">อุดรธานี</option>
+                <option value="75">อุตรดิตถ์</option>
+                <option value="76">อุทัยธานี</option>
+                <option value="77">อุบลราชธานี</option>
+              </select>
+              <label for="type_of_study">Type of Study:</label>
+              <select name="type_of_study" id="type_of_study">
+                <option value>All</option>
+                <option value="ปริญญาตรี">ปริญญาตรี</option>
+                <option value="ปริญญาโท">ปริญญาโท</option>
+                <option value="ปริญญาเอก">ปริญญาเอก</option>
+              </select>
+              <label for="year_rank">Year Rank</label>
+              <select name="year_rank" id="year_rank">
+                <option value>All</option>
+                <option value="1">ชั้นปีที่ 1</option>
+                <option value="2">ชั้นปีที่ 2</option>
+                <option value="3">ชั้นปีที่ 3</option>
+                <option value="4">ชั้นปีที่ 4</option>
+                <option value="5">ชั้นปีที่ 5</option>
+                <option value="6">ชั้นปีที่ 6</option>
+                <option value="7">ชั้นปีที่ 7</option>
+                <option value="8">ชั้นปีที่ 8</option>
+              </select>
+
+              <label for="major">Major</label>
+              <select name="major" id="major">
+                <option value>All</option>
+                <option value="1">คณะเกษตรศาสตร์
+                  ทรัพยากรธรรมชาติและสิ่งแวดล้อม</option>
+                <option value="2">คณะทันตแพทยศาสตร์</option>
+                <option value="3">คณะนิติศาสตร์</option>
+                <option value="4">คณะบริหารธุรกิจ
+                  เศรษฐศาสตร์และการสื่อสาร</option>
+                <option value="5">คณะพยาบาลศาสตร์</option>
+                <option value="6">คณะแพทยศาสตร์</option>
+                <option value="7">คณะเภสัชศาสตร์</option>
+                <option value="8">คณะมนุษยศาสตร์</option>
+                <option value="9">คณะวิทยาศาสตร์</option>
+                <option value="10">คณะวิทยาศาสตร์การแพทย์</option>
+                <option value="11">คณะวิศวกรรมศาสตร์</option>
+                <option value="12">คณะสถาปัตยกรรมศาสตร์</option>
+              </select>
+              <label for="department">Department</label>
+              <select name="department" id="department">
+                <option value>All</option>
+                <option
+                  value="1">สาขาวิชาวิทยาศาสตร์และเทคโนโลยีการอาหาร</option>
+                <option
+                  value="2">สาขาวิชาสัตวศาสตร์และเทคโนโลยีอาหารสัตว์</option>
+                <option value="3">สาขาวิชาเทคโนโลยีชีวภาพทางการเกษตร</option>
+                <option value="4">สาขาวิชาเกษตรแม่นยำ</option>
+                <option value="5">สาขาวิชาวิทยาศาสตร์การประมง</option>
+                <option value="6">สาขาวิชาภูมิศาสตร์</option>
+                <option value="7">สาขาทันตแพทยศาสตร์</option>
+                <option value="8">สาขานิติศาสตร์</option>
+                <option value="9">สาขาการเงิน</option>
+                <option value="10">สาขาการบัญชี</option>
+                <option
+                  value="11">สาขาวิชานวัตกรรมและการตลาดเชิงสร้างสรรค์</option>
+                <option value="12">สาขาธุรกิจดิจิทัล</option>
+                <option value="13">สาขาเศรษฐศาสตร์</option>
+                <option value="14">สาขาการท่องเที่ยว</option>
+                <option value="15">สาขานิเทศศาสตร์</option>
+                <option value="16">สาขาบริหารธุรกิจ</option>
+                <option value="17">สาขาพยาบาลศาสตร์</option>
+                <option value="18">สาขาแพทยศาสตร์</option>
+                <option
+                  value="19">สาขาวิทยาศาสตร์เครื่องสำอางและผลิตภัณฑ์ธรรมชาติ</option>
+                <option value="20">สาขาดุริยางคศิลป์</option>
+                <option value="21">สาขานาฏศิลป์ไทย</option>
+                <option value="22">สาขาวิชาภาษาเกาหลี</option>
+                <option value="23">สาขาวิชาภาษาจีน</option>
+                <option value="24">สาขาวิชาภาษาญี่ปุ่น</option>
+                <option value="25">สาขาวิชาภาษาไทย</option>
+                <option value="26">สาขาวิชาพม่าศึกษา</option>
+                <option value="27">สาขาวิชาภาษาฝรั่งเศษ</option>
+                <option value="28">สาขาวิชาภาษาอังกฤษ</option>
+                <option value="29">สาขาคณิตศาสตร์</option>
+                <option value="30">สาขาเคมี</option>
+                <option value="31">สาขาชีววิทยา</option>
+                <option
+                  value="32">สาขาเทคโนโลยีนวัตกรรมพลังงานและสิ่งแวดล้อม</option>
+                <option value="33">สาขาฟิสิกส์</option>
+                <option value="34">สาขาสถิติ</option>
+                <option value="35">สาขาเทคโนโลยีการวัดและระบบอัจฉริยะ</option>
+                <option value="36">สาขาเทคโนโลยีสารสนเทศ</option>
+                <option value="37">สาขาวิทยาการคอมพิวเตอร์</option>
+                <option value="38">สาขาวิทยาการข้อมูลและการวิเคราะห์</option>
+                <option value="39">สาขาพยาธิวิทยากายวิภาค</option>
+                <option value="40">สาขาวิชาวิศวกรรมเครื่องกล</option>
+                <option value="41">สาขาวิทยาศาสตร์การแพทย์</option>
+                <option value="42">สาขาทัศนศิลป์</option>
+                <option value="43">สาขาสถาปัตยกรรม</option>
+                <option value="44">สาขาวิชาวิศวกรรมอุตสาหการ</option>
+                <option value="45">สาขาเทคโนโลยีสถาปัตยกรรม</option>
+                <option value="46">สาขาอนามัยสิ่งแวดล้อม</option>
+                <option value="47">สาขารัฐศาสตร์</option>
+                <option value="48">สาขาวิศวกรรมซอฟต์แวร์</option>
+              </select>
+
+              <label for="nationality">Nationality</label>
+              <select name="nationality" id="nationality">
+                <option value>All</option>
+                <option value="1">ไทย</option>
+                <option value="2">อื่นๆ</option>
+              </select>
+
+              <button type="submit">Filter</button>
+            </form>
+            <div id="filteredResults">
+              <!-- Display filtered results here using JavaScript -->
+            </div>
+            <div id="paginationButtons">
+              <button id="prevPageBtn" disabled>Previous Page</button>
+              <button id="nextPageBtn">Next Page</button>
+            </div>
+          </div>
+
+          <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+      </div>
+      <!-- End of Page Wrapper -->
+
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+      </a>
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+      <script src="js/sb-admin-2.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+      <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="js/scripts3.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        $(document).ready(function () {
+          // Variable to store current page
+          var currentPage = 1;
+        
+          // Function to handle displaying number of results
+          function displayNumResults(data) {
+            var resultDiv = $('#filteredResults');
+            resultDiv.html(data);
+          }
+        
+          // Function to handle pagination
+          function paginateResults() {
+            var tableRows = $('#filteredResults').find('table tbody tr');
+            var numPerPage = 20;
+            var totalPages = Math.ceil(tableRows.length / numPerPage);
+        
+            // Show only rows for the current page
+            var startIndex = (currentPage - 1) * numPerPage;
+            var endIndex = startIndex + numPerPage;
+            tableRows.hide().slice(startIndex, endIndex).show();
+        
+            // Enable/disable pagination buttons based on current page
+            $('#prevPageBtn').prop('disabled', currentPage === 1);
+            $('#nextPageBtn').prop('disabled', currentPage === totalPages);
+          }
+        
+          // When the form is submitted
+          $('#filterForm').submit(function (e) {
+            e.preventDefault();
+        
+            var formData = $(this).serialize();
+            // AJAX request for displaying table
+            $.ajax({
+              type: 'POST',
+              url: 'generate_table.php', // Update the URL
+              data: formData,
+              success: function (data) {
+                displayNumResults(data);
+                paginateResults();
+              },
+              error: function (xhr, status, error) {
+                console.error('AJAX Error (Table Generation): ' + status + ' - ' + error);
+              }
+            });
+          });
+        
+          // Pagination button click handlers
+          $('#prevPageBtn').click(function () {
+            if (currentPage > 1) {
+              currentPage--;
+              paginateResults();
+            }
+          });
+        
+          $('#nextPageBtn').click(function () {
+            var tableRows = $('#filteredResults').find('table tbody tr');
+            var numPerPage = 10;
+            var totalPages = Math.ceil(tableRows.length / numPerPage);
+        
+            if (currentPage < totalPages) {
+              currentPage++;
+              paginateResults();
+            }
+          });
+        });
+        
+      </script>
+    </body>
+  </html>

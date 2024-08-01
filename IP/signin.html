@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+  <title>Login Page</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/templatemo-style.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
+  <link rel="stylesheet" href="assets/css/login.css">
+  <style>
+    .bg-orange {
+      background-color: #d87732;
+    }
+
+    .row.d-flex.justify-content-center.align-items-center.h-100 {
+      margin-top: -210px;
+      /* หรือค่าที่ต้องการ */
+    }
+
+    html,
+    body {
+      overflow: hidden;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body class="is-preload ">
+  <!-- Wrapper -->
+  <div id="wrapper">
+    <!-- Main -->
+    <div id="main">
+      <div class="inner gradient-custom">
+
+        <!-- Header -->
+        <header id="header">
+          <div class="logo">
+            <a href="index.html">NU</a>
+          </div>
+        </header>
+        <!-- Page Heading -->
+        <div class="page-heading "> <!--login screen-->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12 ">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form id="frmlogin" name="frmlogin" method="post" action="login.php" onsubmit="return validateForm()">
+        <section class="vh-100 gradient-custom">
+          <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-orange text-white" style="border-radius: 1rem;">
+                  <div class="shadow-lg  card-body p-5 text-center ">
+                    <div class="mt-md-4 ">
+                      <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                      <p class="text-white-50 mb-5">Please enter your login and password!</p>
+
+                      <div class="form-outline form-white mb-4">
+                        <label class="form-label" for="typeEmailX">StudentID</label>
+                        <input type="text" id="Username" class="form-control form-control-lg" name="Username"
+                          required />
+                      </div>
+
+                      <div class="form-outline form-white mb-4">
+                        <label class="form-label" for="typePasswordX">Password</label>
+                        <input type="password" id="Password" class="form-control form-control-lg" name="Password"
+                          required />
+                      </div>
+
+                      <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+                      <button class="btn-dark btn-outline-light  btn-lg px-5" type="submit">Login</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </form>
+    </div>
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="inner">
+        <!-- Search Box -->
+        <img class="nulogo" src="assets/images/NU_LOGO.png">
+        <!-- Menu -->
+        <nav id="menu">
+          <ul>
+            <li><a href="index.html">หน้าหลัก</a></li>
+          </ul>
+        </nav>
+
+        <!-- Featured Posts -->
+
+        <!-- Footer -->
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/transition.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script>
+    function validateForm() {
+      var email = document.getElementById('typeEmailX').value;
+      var password = document.getElementById('typePasswordX').value;
+
+      if (email.trim() === '' || password.trim() === '') {
+        alert('Please enter both email and password.');
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+
+
+</body>
+
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content>
+        <meta name="author" content>
+        <title>NU DASHBOARD</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- Custom fonts for this template-->
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+            type="text/css">
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+        <!-- Custom styles for this template-->
+        <link href="css/sb-admin-2.min.css" rel="stylesheet">
+        <style>
+        .bg-orange {
+            background-color: #fd7e14;
+        }
+    .btn-dark {
+        background-color: black; /* เปลี่ยนสีพื้นหลังเป็นสีดำ */
+        color: white; /* เปลี่ยนสีข้อความเป็นสีขาว */
+    }
+    .table thead th {
+        background-color: #f57c00; /* สีส้ม */
+        color: white; /* สีขาว */
+    }
+    .table {
+        background-color: white; /* พื้นหลังของตารางเป็นสีขาว */
+    }
+
+    .table td,
+    .table th {
+        color: black; /* ตัวหนังสือในตารางเป็นสีดำ */
+    }
+    .table-bordered {
+    border: 1px solid black; /* เส้นขอบของตารางเป็นสีดำ */
+}
+.table-bordered th:first-child,
+.table-bordered td:first-child {
+    border-top-left-radius: 10px; /* ให้มุมบนซ้ายเป็นรูปโค้ง */
+    border-bottom-left-radius: 0px; /* ให้มุมล่างซ้ายเป็นรูปตรง */
+}
+
+.table-bordered th:last-child,
+.table-bordered td:last-child {
+    border-top-right-radius: 10px; /* ให้มุมบนขวาเป็นรูปโค้ง */
+    border-bottom-right-radius: 0px; /* ให้มุมล่างขวาเป็นรูปตรง */
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #f5f5f5; /* เส้นขอบของเซลล์เป็นสีดำ */
+}
+.table thead th {
+    border-bottom: 1px solid white; /* เส้นใต้ของหัวข้อตารางเป็นสีดำ */
+}
+h2 {
+    color: black; /* เปลี่ยนสีของตัวหนังสือใน <h2> เป็นสีดำ */
+}
+label {
+    color: black; /* เปลี่ยนสีของตัวหนังสือใน <label> เป็นสีดำ */
+}
+h4 {
+    color: black; /* เปลี่ยนสีของตัวหนังสือใน <h2> เป็นสีดำ */
+}
+
+
+    </style>
+    </head>
+
+    <body id="page-top">
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <ul
+                class="navbar-nav bg-gradient bg-orange sidebar sidebar-dark accordion"
+                id="accordionSidebar">
+                <!-- Sidebar - Brand -->
+                <a
+                    class="sidebar-brand d-flex align-items-center justify-content-center"
+                    href="main.php">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-laugh-wink"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-2">NU DASHBOARD</div>
+                </a>
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+                <!-- Nav Item - Dashboard -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="main.php">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span></a>
+                </li>
+
+                <hr class="sidebar-divider">
+
+                <!-- Nav Item - Charts -->
+                <li class="nav-item">
+                    <a class="nav-link" href="studentpage.html">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Students</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="teacherpage.html">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Teacher</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="subject.php">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Subject</span></a>
+                </li>
+
+                <hr class="sidebar-divider d-none d-md-block">
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0"
+                        id="sidebarToggle"></button>
+                </div>
+            </ul>
+
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <nav
+                        class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                        <button id="sidebarToggleTop"
+                            class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown no-arrow d-sm-none">
+                                <a class="nav-link dropdown-toggle" href="#"
+                                    id="searchDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </a>
+                                <div
+                                    class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                    aria-labelledby="searchDropdown">
+                                    <form
+                                        class="form-inline mr-auto w-100 navbar-search">
+                                        <div class="input-group">
+                                            <input type="text"
+                                                class="form-control bg-light border-0 small"
+                                                placeholder="Search for..."
+                                                aria-label="Search"
+                                                aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary"
+                                                    type="button">
+                                                    <i
+                                                        class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </nav>
+                    <!-- End of Topbar -->
+                    <div class="container mt-5">
+                        <h2>คะแนนประเมินอาจารย์</h2>
+
+                        <!-- Dropdown menu for selecting teacher -->
+                        <div class="mb-3">
+                            <label for="teacherSelect">เลือกคณะ:</label>
+                            <select class="form-control" id="teacherSelect"
+                                onchange="fetchData()">
+                                <option value="all">ทั้งหมด</option>
+                                <option value="1">คณะเกษตรศาสตร์
+                                    ทรัพยากรธรรมชาติและสิ่งแวดล้อม</option>
+                                <option value="2">คณะทันตแพทยศาสตร์</option>
+                                <option value="3">คณะนิติศาสตร์</option>
+                                <option value="4">คณะบริหารธุรกิจ
+                                    เศรษฐศาสตร์และการสื่อสาร</option>
+                                <option value="5">คณะพยาบาลศาสตร์</option>
+                                <option value="6">คณะแพทยศาสตร์</option>
+                                <option value="7">คณะเภสัชศาสตร์</option>
+                                <option value="8">คณะมนุษยศาสตร์</option>
+                                <option value="9">คณะวิทยาศาสตร์</option>
+                                <option
+                                    value="10">คณะวิทยาศาสตร์การแพทย์</option>
+                                <option value="11">คณะวิศวกรรมศาสตร์</option>
+                                <option value="12">คณะสถาปัตยกรรมศาสตร์</option>
+                            </select>
+                        </div>
+                        <div class="mt-3" id="averageScoreDiv">
+                            <h4>Average Score: <span
+                                    id="averageScore">-</span></h4>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>รหัสการประเมิน</th>
+                                    <th>รหัสนักศึกษา</th>
+                                    <th>ชื่ออาจารย์</th>
+                                    <th>รายวิชา</th>
+                                    <th>คะแนน</th>
+                                    <th>ความคิดเห็น</th>
+                                </tr>
+                            </thead>
+                            <tbody id="evaluationTableBody">
+                                <!-- ข้อมูลจะถูกแสดงที่นี่ -->
+                            </tbody>
+                        </table>
+                        <!-- Pagination -->
+                        <div class="mt-3">
+                            <button id="previousPageBtn"
+                                class="btn btn-dark mr-2"
+                                disabled>Previous</button>
+                            <button id="nextPageBtn"
+                                class="btn btn-dark">Next</button>
+                        </div>
+
+                    </div>
+
+                    <!-- End of Footer -->
+
+                </div>
+                <!-- End of Content Wrapper -->
+
+            </div>
+            <!-- End of Page Wrapper -->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+            <script src="js/sb-admin-2.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+            <script
+                src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+    var currentPage = 1;
+    var recordsPerPage = 10;
+    var data;
+
+
+    function fetchData() {
+        var selectedFaculty = $('#teacherSelect').val();
+
+        // Use AJAX to fetch data from the server
+        $.ajax({
+            url: 'evedata.php',
+            type: 'GET',
+            data: { faculty: selectedFaculty },
+            success: function (responseData) {
+                // Save data for pagination
+                data = responseData;
+
+                // Populate the table with data for the current page
+                populateTable(currentPage);
+                
+                // Update the average score
+                updateAverageScore(data);
+            },
+            error: function (error) {
+                console.error('Error fetching data:', error);
+            }
+        });
+    }
+
+    // Populate the table with data for the specified page
+    function populateTable(page) {
+        var tableBody = $('#evaluationTableBody');
+        tableBody.empty(); // Clear existing rows
+
+        var startIndex = (page - 1) * recordsPerPage;
+        var endIndex = startIndex + recordsPerPage;
+        var paginatedData = data.slice(startIndex, endIndex);
+
+        // Iterate through the paginated data and append rows to the table
+        paginatedData.forEach(function (evaluation) {
+            var row = $('<tr>');
+            row.append('<td>' + evaluation.eva_ID + '</td>');
+            row.append('<td>' + evaluation.Stu_ID + '</td>');
+            row.append('<td>' + evaluation.Teacher_Name + '</td>');
+            row.append('<td>' + evaluation.Teacher_subject + '</td>');
+            row.append('<td>' + evaluation.Teacher_score + '</td>');
+            row.append('<td>' + evaluation.comment + '</td>');
+            tableBody.append(row);
+        });
+
+        // Update pagination controls
+        updatePaginationControls();
+    }
+
+    // Update pagination controls based on current page and total records
+    function updatePaginationControls() {
+        var totalPages = Math.ceil(data.length / recordsPerPage);
+
+        // Disable previous button if on the first page
+        if (currentPage === 1) {
+            $('#previousPageBtn').prop('disabled', true);
+        } else {
+            $('#previousPageBtn').prop('disabled', false);
+        }
+
+        // Disable next button if on the last page
+        if (currentPage === totalPages) {
+            $('#nextPageBtn').prop('disabled', true);
+        } else {
+            $('#nextPageBtn').prop('disabled', false);
+        }
+    }
+
+    // Navigate to the previous page
+    $('#previousPageBtn').click(function () {
+        if (currentPage > 1) {
+            currentPage--;
+            populateTable(currentPage);
+        }
+    });
+
+    // Navigate to the next page
+    $('#nextPageBtn').click(function () {
+        var totalPages = Math.ceil(data.length / recordsPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            populateTable(currentPage);
+        }
+    });
+
+    // Call fetchData function when the page loads
+    $(document).ready(function () {
+        fetchData();
+    });
+            // Update the average score
+            function updateAverageScore(data) {
+                // Calculate the average score
+                var totalScore = 0;
+                var numEvaluations = data.length;
+
+                if (numEvaluations > 0) {
+                    data.forEach(function (evaluation) {
+                        totalScore += parseInt(evaluation.Teacher_score);
+                    });
+
+                    var averageScore = totalScore / numEvaluations;
+
+                    // Update the content of the average score element
+                    $('#averageScore').text(averageScore.toFixed(2));
+                } else {
+                    // If no evaluations, set the average score to "-"
+                    $('#averageScore').text('-');
+                }
+            }
+
+            // Call fetchData function when the page loads
+            $(document).ready(function () {
+                fetchData();
+            });
+        </script>
+
+        </body>
+
+    </html>

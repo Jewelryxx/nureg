@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+    <title>ลงทะเบียนเรียน</title>
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/reg.css">
+    <style>
+        .search-input {
+            background-color: #ffffff;
+            color: #fff;
+            border: 1px solid #000000;
+            border-radius: 10px;
+
+            /* เพิ่ม border ของ input field */
+        }
+
+        th {
+            background-color: #d6915f;
+        }
+
+        #userid {
+            background-color: #f2f2f2;
+            /* เปลี่ยนสีพื้นหลังเป็นสีเทาอ่อน */
+            padding: 5px 10px;
+            /* เพิ่ม padding เพื่อให้ข้อความของ userid อยู่ในกรอบ */
+            border-radius: 5px;
+            /* เพิ่มขอบโค้งที่เป็นลวดลายรอบขอบ */
+        }
+    </style>
+</head>
+
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                <!-- Header -->
+                <header id="header">
+                    <div class="logo">
+                        <a href="StudentIndex.html">NU TEACHER</a>
+                    </div>
+                </header>
+                <h1>ใส่ผลการศึกษา</h1>
+                <!-- Page Heading -->
+                <div class="d-flex justify-content-center">
+                    <form class="form-horizontal" action="search.php" method="post">
+                        <div class="search mr-2">
+                            <input type="text" class="search-input" placeholder="ใส่รหัสรายวิชา" name="search">
+                            <button class="w3-btn w3-round-xlarge" type="submit">ค้นหา</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- Display Search Results -->
+                <div id="searchResults" class="mt-4"></div>
+
+                <!-- ตำแหน่งที่จะแสดงข้อมูลในตะกร้า -->
+                <div id="cartContents" class="mt-4"></div>
+
+                <!-- ลิงก์หรือปุ่มเพื่อดูตะกร้า -->
+            </div>
+        </div>
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="inner">
+                <!-- Search Box -->
+                <img class="nulogo" src="assets/images/NU_LOGO.png">
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <ul>
+                        <li><a href="TeacherIndex.html">หน้าหลัก</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to handle Add button click
+            function addToCart(itemId) {
+                // Perform AJAX request to addToCart.php with the item ID
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Display a success message or perform additional actions if needed
+                        alert('Item added to cart successfully!');
+                    }
+                };
+                xhr.open('POST', 'addToCart.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.send('itemId=' + itemId);
+            }
+
+            // Attach click event to the Add button
+            document.getElementById('searchResults').addEventListener('click', function (event) {
+                // Check if the clicked element has the 'addToCartBtn' class
+                if (event.target.classList.contains('addToCartBtn')) {
+                    // Get the data-item-id attribute to identify the item
+                    var itemId = event.target.getAttribute('data-item-id');
+                    // Call the addToCart function with the itemId
+                    addToCart(itemId);
+                }
+            });
+
+            // Function to handle form submission
+            document.querySelector('form').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Get the form data
+                var formData = new FormData(this);
+
+                // Perform AJAX request to search.php
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Update the searchResults div with the response
+                        document.getElementById('searchResults').innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.open('POST', 'searchTeacher.php', true);
+                xhr.send(formData);
+            });
+        });
+        function editRecord(enrollmentID) {
+            var newScore = prompt("กรุณาใส่คะแนนใหม่:");
+            var newGrade = prompt("กรุณาใส่เกรดใหม่:");
+
+            // Assuming you are using AJAX to send the enrollmentID, newScore, and newGrade to the server
+            // You can modify this part based on your preferred method (e.g., Fetch API, XMLHttpRequest)
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Handle the response from the server if needed
+                    console.log(this.responseText);
+                }
+            };
+
+            // Replace 'your_edit_script.php' with the script handling the edit process
+            // Pass enrollmentID, newScore, and newGrade as parameters
+            xhr.open("GET", "edit_record.php?enrollmentID=" + enrollmentID + "&newScore=" + newScore + "&newGrade=" + newGrade, true);
+            xhr.send();
+        }
+        window.updateRecord = function () {
+            var enrollmentID = document.getElementById('enrollmentID').value;
+            var newScore = document.getElementById('newScore').value;
+            var newGrade = document.getElementById('newGrade').value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                }
+            };
+
+            xhr.open("GET", "edit_record.php?enrollmentID=" + enrollmentID + "&newScore=" + newScore + "&newGrade=" + newGrade, true);
+            xhr.send();
+        };
+    </script>
+</body>
+
+</html>

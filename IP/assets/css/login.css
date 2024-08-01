@@ -1,0 +1,24 @@
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #ffffff;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: #ffffff;
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #ffffff;
+}
+
+.gradient-custom .vh-100 {
+    position: flex;
+}
+
+.small-image {
+    width: 100px;
+    /* ปรับขนาดตามที่คุณต้องการ */
+    height: auto;
+    /* รักษาสัดส่วนของรูป */
+    float: left;
+    /* วางตำแหน่งที่ด้านซ้าย */
+    margin-right: 10px;
+    /* เพิ่มระยะห่างข้างขวา (ถ้าต้องการ) */
+}
